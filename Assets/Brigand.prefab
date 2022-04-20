@@ -31,6 +31,7 @@ Transform:
   - {fileID: 621155703626051093}
   - {fileID: 5471021369124513041}
   - {fileID: 7648933434883952731}
+  - {fileID: 4803841954869488686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067310857513414763}
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: -0.232, y: -1.042, z: -0.364}
+  m_LocalPosition: {x: -0.23, y: -1.06, z: -0.37}
   m_LocalScale: {x: 0.47227618, y: 0.3431717, z: 0.68511}
   m_Children: []
   m_Father: {fileID: 8667622392378602756}
@@ -130,6 +131,36 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &1503113071354441639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4803841954869488686}
+  m_Layer: 0
+  m_Name: Canon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4803841954869488686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503113071354441639}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.018, y: 1.043, z: 0.469}
+  m_LocalScale: {x: 1039.719, y: 213.6256, z: 132.4153}
+  m_Children: []
+  m_Father: {fileID: 8667622392378602756}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3297894311859284026
 GameObject:
   m_ObjectHideFlags: 0
