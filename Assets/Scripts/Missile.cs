@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    public float movementSpeed = 5f;
+    
+    public float movementSpeed;
 
     public GameObject explosion;
 
@@ -32,10 +33,19 @@ public class Missile : MonoBehaviour
             Destroy(gameObject); // Detruire le missile
             Instantiate(explosion, other.transform.position, other.transform.rotation); // Creer une explosion
 
-            other.transform.GetComponent<Asteroid>()?.Explode(); // Est equivalent a:
-            //var asteroid = other.transform.GetComponent<Asteroid>();
-            //if (asteroid != null)
-            //    asteroid.Explode();
+            other.transform.GetComponent<Asteroid>()?.Explode();
+        }
+        if (other.CompareTag("Brigand"))
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);  // Creer une explosion
+            other.transform.GetComponent<Brigand>()?.Toucher();
+        }
+        if (other.CompareTag("Player"))
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);  // Creer une explosion
+            other.transform.GetComponent<Player>()?.Toucher();
         }
     }
 }

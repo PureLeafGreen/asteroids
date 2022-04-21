@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float movementSpeed = 5f, rotationSpeed = 150f;
+    public static float movementSpeed = 5f, rotationSpeed = 150f;
 
     public GameObject missile, canon;
     public GameObject explosion;
@@ -37,8 +37,23 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Instantiate(explosion, other.transform.position, other.transform.rotation);
+        if (other.CompareTag("Asteroid"))
+        {
+            Destroy(gameObject); // Detruire le missile
+            Instantiate(explosion, other.transform.position, other.transform.rotation); // Creer une explosion
+
+            other.transform.GetComponent<Asteroid>()?.Explode();
+        }
+        if (other.CompareTag("Brigand"))
+        { // Detruire le missile
+            Instantiate(explosion, transform.position, transform.rotation); // Creer une explosion
+            Destroy(gameObject);
+            other.transform.GetComponent<Brigand>()?.Toucher();
+        }
+    }
+
+    public void Toucher()
+    {
         Destroy(gameObject);
-        Destroy(other.gameObject);
     }
 }
