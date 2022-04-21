@@ -39,15 +39,14 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Asteroid"))
         {
-            Destroy(gameObject); // Detruire le missile
-            Instantiate(explosion, other.transform.position, other.transform.rotation); // Creer une explosion
-
+            Instantiate(explosion, transform.position, transform.rotation); // Creer une explosion
+            Toucher();
             other.transform.GetComponent<Asteroid>()?.Explode();
         }
         if (other.CompareTag("Brigand"))
         { // Detruire le missile
             Instantiate(explosion, transform.position, transform.rotation); // Creer une explosion
-            Destroy(gameObject);
+            Toucher();
             other.transform.GetComponent<Brigand>()?.Toucher();
         }
     }
@@ -55,5 +54,6 @@ public class Player : MonoBehaviour
     public void Toucher()
     {
         Destroy(gameObject);
+        ScoreManager.Instance.OnDestroy();
     }
 }

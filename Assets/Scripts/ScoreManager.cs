@@ -7,12 +7,14 @@ public class ScoreManager : MonoBehaviour
     private static ScoreManager _instance;
     public static ScoreManager Instance { get { return _instance; } }
 
-    private int maxTemps = 60 * 5;
+    private float maxTemps = 60 * 5;
     private int score = 0;
-    private float time = 0;
+    private float time;
+    GameObject joueur;
 
     private void Awake()
     {
+        time = 0f;
         if (_instance != null && _instance != this)
             Destroy(this.gameObject);
         else
@@ -22,9 +24,11 @@ public class ScoreManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
+        {
             SceneManager.LoadScene("MenuScene");
+        }
         time += Time.deltaTime;
-        tempsLimite
+        tempsLimite(time);
     }
 
     public void AddScore(int inc = 1)
@@ -39,5 +43,9 @@ public class ScoreManager : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+    }
+    public void OnDestroy()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }
