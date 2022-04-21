@@ -29,5 +29,8 @@ public class ScoreManager : MonoBehaviour
         Debug.Log($"Score: {score} (+{inc})"); // Equivalent a Debug.Log("Score: " + score + "(+" + inc + ")");
     }
 
-    //TODO Arreter la partie quand il n'y a plus d'asteroides.
+    public void tempsLimite()
+    {
+
+    }
 }

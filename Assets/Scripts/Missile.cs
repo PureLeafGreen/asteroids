@@ -41,6 +41,12 @@ public class Missile : MonoBehaviour
             Destroy(gameObject);  // Creer une explosion
             other.transform.GetComponent<Brigand>()?.Toucher();
         }
+        if (other.CompareTag("Tirailleur"))
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);  // Creer une explosion
+            other.transform.GetComponent<Tirailleur>()?.Toucher();
+        }
         if (other.CompareTag("Player"))
         {
             Instantiate(explosion, transform.position, transform.rotation);
