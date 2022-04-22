@@ -5,6 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float movementSpeed = 5f, rotationSpeed = 150f;
+    float tmpSpeed = 5f;
+    float timeBoost = 10f;
+    float timeForBoost = 0f;
 
     public GameObject missile, canon;
     public GameObject explosion;
@@ -33,12 +36,19 @@ public class Player : MonoBehaviour
         {
             Instantiate(missile, canon.transform.position, canon.transform.rotation);
         }
+        if (movementSpeed > tmpSpeed)
+        {
+            timeForBoost += Time.deltaTime;
+            if (timeForBoost >= timeBoost)
+            {
+                movementSpeed = tmpSpeed;
+            }
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    public void upgradeMouvementSpeed(float speed)
     {
-        //Instantiate(explosion, other.transform.position, other.transform.rotation);
-        Destroy(gameObject);
-        Destroy(other.gameObject);
+        movementSpeed = speed;
     }
 }
