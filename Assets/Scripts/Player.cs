@@ -51,18 +51,19 @@ public class Player : MonoBehaviour
         movementSpeed = speed;
     }
 
-    public void OnTriggerEnter{
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.CompareTag("Asteroid"))
         {
             Instantiate(explosion, transform.position, transform.rotation); // Creer une explosion
+            other.transform.GetComponent<Asteroid>()?.Explode(); 
             Toucher();
-            other.transform.GetComponent<Asteroid>()?.Explode();
         }
         if (other.CompareTag("Brigand"))
         { // Detruire le missile
             Instantiate(explosion, transform.position, transform.rotation); // Creer une explosion
+            other.transform.GetComponent<Brigand>()?.Toucher(); 
             Toucher();
-            other.transform.GetComponent<Brigand>()?.Toucher();
         }
     }
 
