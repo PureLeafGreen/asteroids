@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static float movementSpeed = 5f, rotationSpeed = 150f;
+    public float movementSpeed = 5f, rotationSpeed = 150f;
+    float tmpSpeed = 5f;
+    float timeBoost = 10f;
+    float timeForBoost = 0f;
 
     public GameObject missile, canon;
     public GameObject explosion;
@@ -33,10 +36,22 @@ public class Player : MonoBehaviour
         {
             Instantiate(missile, canon.transform.position, canon.transform.rotation);
         }
+        if (movementSpeed > tmpSpeed)
+        {
+            timeForBoost += Time.deltaTime;
+            if (timeForBoost >= timeBoost)
+            {
+                movementSpeed = tmpSpeed;
+            }
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+
+    public void upgradeMouvementSpeed(float speed) {
+        movementSpeed = speed;
+    }
+
+    public void OnTriggerEnter{
         if (other.CompareTag("Asteroid"))
         {
             Instantiate(explosion, transform.position, transform.rotation); // Creer une explosion
